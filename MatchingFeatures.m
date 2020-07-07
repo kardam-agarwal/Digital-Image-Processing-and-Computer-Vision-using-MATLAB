@@ -1,5 +1,5 @@
-image1=imread('pic.jpg');
-image2=imread('pic2.jpg');
+image1=imread('pic.jpg'); %original pic
+image2=imread('croppedpic.jpg'); %cropped pic
 x=im2bw(image1);
 y=im2bw(image2);
 z=detectSURFFeatures(x);
@@ -13,8 +13,8 @@ hold on;
 [v,z]=extractFeatures(x,z);
 [b,z1]=extractFeatures(y,z1);
 n=matchFeatures(v,b);
-image3=z(n(:,1));   #Eliminates all features except the matched one in the original image#
-image4=z1(n(:,2));  #Again does the same ,necessary because other features other than the cropped image are also matched in the original image,see the connecting lines#
+image3=z(n(:,1));   %Eliminates all features except the matched one in the original image
+image4=z1(n(:,2));  %Again does the same ,necessary because other features other than the cropped image are also matched in the original image,see the connecting lines
 figure;
 showMatchedFeatures(x,y,image3,image4)
 [tform,s1,s2]=estimateGeometricTransform(image3,image4,'affine');
