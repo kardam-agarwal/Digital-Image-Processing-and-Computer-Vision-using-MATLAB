@@ -1,10 +1,10 @@
-a=videoinput('winvideo',1,'YUY2_320x240');
+a=videoinput('winvideo',1,'YUY2_320x240');  %Start the webcam
 b=getselectedsource(a);
-a.FramesPerTrigger=Inf;     %no. of frames that the web cam will read
+a.FramesPerTrigger=Inf;     %No. of frames that the webcam will read
 a.ReturnedColorSpace='rgb';
 a.frameGrabInterval=5;
-preview(a);                %FOR STARTING THE VIDEO
-start(a);                  %FOR STARTING THE TIMER TO COUNT A 100 FRAMES
+preview(a);                %For starting the video preview
+start(a);                  %For starting the counter to count 100 frames
 while(a.FramesAcquired<=100)
 c=getsnapshot(a);
 d=imsubtract(c(:,:,1),rgb2gray(c));
@@ -15,7 +15,7 @@ f=regionprops(e,'BoundingBox','Centroid', 'FilledArea','Area');
 length(f);
 imshow(c);
 hold on
-for(g=1:length(f))         %Tells the number of boxes that needs to be considered.Here ,all
+for(g=1:length(f))         %Tells the number of boxes that needs to be considered.Here,all
 db=f(g).BoundingBox;
 dc=f(g).Centroid;
 df=f(g).FilledArea;
