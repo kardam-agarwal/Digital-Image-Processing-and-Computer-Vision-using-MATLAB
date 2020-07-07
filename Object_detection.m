@@ -1,5 +1,5 @@
 thresh=0.1;
-sample=imaq.VideoDevice('winvideo', 1,'YUY2_320x240','ROI',[1 1 320 240],'ReturnedColorSpace','rgb');
+sample=imaq.VideoDevice('winvideo', 1,'YUY2_320x240','ROI',[1 1 320 240],'ReturnedColorSpace','rgb'); %Input from the webcam
 videoinfo=imaqhwinfo(sample);
 hblob=vision.BlobAnalysis('AreaOutputPort',false,'CentroidOutputPort',true,'BoundingBoxOutputPort',true,'MinimumBlobArea',50,'MaximumBlobArea',3000,'MaximumCount',10);
 htext=vision.ShapeInserter('BorderColor','Custom','CustomBorderColor',[0 1 0],'Fill',true,'FillColor','Custom','CustomFillColor',[0 1 0],'Opacity',0.4);
